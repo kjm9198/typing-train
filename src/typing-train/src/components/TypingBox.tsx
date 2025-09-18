@@ -19,10 +19,11 @@ export default function TypingBox() {
             const expected = sampleText[currentIndex];
             const typed = e.key;
 
-            if (typed.length === 1) {
-                setInput((prev) => prev + typed);
-                setCurrentIndex((prev) => prev + 1);
-            }
+            setInput((prev: string) => prev + typed);
+            setCurrentIndex((prev: number) => prev + 1);
+
+            const correctChars = input.split("").filter((ch: string, i: number) => ch === sampleText[i]).length;
+
 
             if (currentIndex + 1 === sampleText.length) {
                 setFinished(true);
