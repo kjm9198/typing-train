@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5b7edb7-2f7b-459f-b4e9-8570067fec34" name="Changes" comment="index" />
+    <list default="true" id="f5b7edb7-2f7b-459f-b4e9-8570067fec34" name="Changes" comment="index">
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Keyboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Keyboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TypingBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TypingBox.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,8 +61,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -73,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758235074261</updated>
-      <workItem from="1758235075309" duration="4568000" />
+      <workItem from="1758235075309" duration="4885000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Mvp">
       <option name="closed" value="true" />
@@ -131,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758275385778</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="index">
+      <option name="closed" value="true" />
+      <created>1758275594865</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758275594865</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
