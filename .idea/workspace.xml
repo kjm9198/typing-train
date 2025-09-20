@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5b7edb7-2f7b-459f-b4e9-8570067fec34" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/convex/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/convex/texts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/providers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/convexClient.ts" afterDir="false" />
+    <list default="true" id="f5b7edb7-2f7b-459f-b4e9-8570067fec34" name="Changes" comment="Changes so far in convex and keyboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Keyboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Keyboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TypingBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TypingBox.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +31,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "fb960bd6",
+    "git-widget-placeholder": "c9d4b922",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,6 +58,15 @@
       <updated>1758235074261</updated>
       <workItem from="1758235075309" duration="421000" />
     </task>
+    <task id="LOCAL-00001" summary="Changes so far in convex and keyboard">
+      <option name="closed" value="true" />
+      <created>1758367740667</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758367740667</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,15 +83,8 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/layout.tsx</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes so far in convex and keyboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes so far in convex and keyboard" />
   </component>
 </project>
