@@ -2,54 +2,66 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const sampleText = "The quick brown fox jumps over the lazy dog.";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function TypingBox() {
+    const randomText = useQuery(api.texts.getRandomText);
+
     const [input, setInput] = useState("");
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [startTime, setStartTime] = useState<number | null>(null);
     const [finished, setFinished] = useState(false);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (finished) return;
+            if (!randomText?.content || finished) return;
 
             if (!startTime) setStartTime(Date.now());
 
-            const expected = sampleText[currentIndex];
-            const typed = e.key;
-
-            if (typed.length === 1) {
-                setInput((prev: string) => prev + typed);
-                setCurrentIndex((prev: number) => prev + 1);
-            }
-
-            if (currentIndex + 1 === sampleText.length) {
-                setFinished(true);
+            if (e.key === "Backspace") {
+                setInput((prev) => prev.slice(0, -1));
+            } else if (e.key.length === 1) {
+                if (input.length < randomText.content.length) {
+                    setInput((prev) => prev + e.key);
+                    if (input.length + 1 === randomText.content.length) {
+                        setFinished(true);
+                    }
+                }
             }
         };
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [currentIndex, finished, startTime]);
+    }, [input, finished, startTime, randomText]);
 
-    const correctChars = input.split("").filter((ch, i) => ch === sampleText[i])
-        .length;
-    const accuracy =
-        input.length > 0
-            ? Math.round((correctChars / input.length) * 100)
-            : 100;
+    if (!randomText) {
+        return (
+            <div className="max-w-xl mx-auto text-center p-6 border rounded-lg shadow bg-white dark:bg-gray-800">
+                <p className="text-gray-500">Loading text...</p>
+            </div>
+        );
+    }
 
-    const wpm =
-        finished && startTime
-            ? Math.round((input.length / 5) / ((Date.now() - startTime) / 60000))
-            : 0;
+    const correctChars = input
+        .split("")
+        .filter((ch, i) => ch === randomText.content[i]).length;
+    const mistakes = input.length - correctChars;
+    const accuracy = input.length > 0 ? Math.round((correctChars / input.length) * 100) : 100;
+    const wpm = startTime
+        ? Math.round((input.length / 5) / ((Date.now() - startTime) / 60000))
+        : 0;
+
+    const restart = () => {
+        setInput("");
+        setStartTime(null);
+        setFinished(false);
+        // Convex query will automatically refresh with new random text
+    };
 
     return (
         <div className="max-w-xl mx-auto text-center p-6 border rounded-lg shadow bg-white dark:bg-gray-800">
             <p className="text-lg mb-4 leading-relaxed">
-                {sampleText.split("").map((ch, i) => {
+                {randomText.content.split("").map((ch, i) => {
                     const isTyped = i < input.length;
                     const isCorrect = isTyped && ch === input[i];
                     let color = "";
@@ -63,7 +75,7 @@ export default function TypingBox() {
                             className={color}
                             initial={{ opacity: 0.3, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.15 }}
                         >
                             {ch}
                         </motion.span>
@@ -75,7 +87,7 @@ export default function TypingBox() {
                 {finished ? (
                     <motion.div
                         key="results"
-                        className="mt-4"
+                        className="mt-4 space-y-2"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
@@ -84,17 +96,25 @@ export default function TypingBox() {
                         <p>✅ Finished!</p>
                         <p>Accuracy: {accuracy}%</p>
                         <p>WPM: {wpm}</p>
+                        <p>Mistakes: {mistakes}</p>
+                        <button
+                            onClick={restart}
+                            className="mt-3 px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition"
+                        >
+                            Restart
+                        </button>
                     </motion.div>
                 ) : (
-                    <motion.p
-                        key="hint"
-                        className="text-gray-500"
+                    <motion.div
+                        key="stats"
+                        className="text-gray-500 space-y-1"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                        Start typing the sentence above...
-                    </motion.p>
+                        <p>Start typing the sentence above...</p>
+                        <p>Accuracy: {accuracy}% | WPM: {wpm} | Mistakes: {mistakes}</p>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </div>
